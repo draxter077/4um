@@ -1,0 +1,12 @@
+export default function logo(){
+    let style = `
+        {
+            height:52px;
+            border:2px solid var(--colorWhite);
+        }`
+
+    const logo = cE("img",style)
+    logo.src = "/assets/"
+    logo.alt = "Logotipo da NomeEmpresa"
+    return(logo)
+}
