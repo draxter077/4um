@@ -17,7 +17,7 @@ export default async function main(){
     const main = cE("div",style)
 
     let data = {}
-    await axios.get(`${api_url}/4um/init`)
+    await axios.get(`${api_url}/init`)
         .then(async r => {
             data = r.data
         })
