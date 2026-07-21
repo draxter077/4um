@@ -1,6 +1,6 @@
 import menu from "./menu/main.js"
 import logo from "./logo/main.js"
-import info_bot from "./info_bot/main.js"
+import date from "./date/main.js"
 
 export default function head(){
     let style = `
@@ -15,6 +15,6 @@ export default function head(){
     const head = cE("div",style)
     head.appendChild(menu())
     head.appendChild(logo())
-    head.appendChild(info_bot())
+    head.appendChild(date())
     return(head)
 }

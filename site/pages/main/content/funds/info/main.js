@@ -18,7 +18,8 @@ export default function info(f){
         }
         :responsive{
             width:100%;
-            height:70svh;
+            height:100%;
+            margin:5px 0px 0px;
         }`
 
     const info = cE("div",style)

@@ -5,7 +5,7 @@ export default function curve(xi,yi,xf,yf,d){
             left: ${xi};
             top: ${d ? yf : yi};
             width: calc(${xf} - ${xi});
-            height: calc(${d ? `${yi} - ${yf}` : `${yf} - ${yi}`});
+            height: calc(${d ? `${yi} - ${yf}` : `${yf} - ${yi}`} + 2px);
             background-image: ${d ? 
                 "linear-gradient(to bottom right, transparent calc(50% - 1.5px), var(--colorGreen), transparent calc(50% + 1.5px))" : 
                 "linear-gradient(to top right, transparent calc(50% - 1.5px), var(--colorGreen), transparent calc(50% + 1.5px))"};

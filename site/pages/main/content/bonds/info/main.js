@@ -15,7 +15,10 @@ export default function info(b){
         transition:opacity 0.5s;
     }
     :responsive{
-        height:200px;
+        flex-direction:column;
+        width:100%;
+        height:100%;
+        margin:5px 0px 0px;
     }`
 
     const info = cE("div",style)

@@ -11,7 +11,7 @@ export default function basic(f){
             width:100%;
         }
         :responsive{
-            width:95%;
+            width:100%;
         }`
 
     const basic = cE("div",style)

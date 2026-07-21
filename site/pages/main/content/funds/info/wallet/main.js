@@ -8,14 +8,13 @@ export default function wallet(w){
             flex-direction:column;
             width:calc(100% - 10px);
             height:fit-content;
-            margin:5px;
+            margin:5px 0px;
             padding:10px 15px;
             box-shadow:0px 0px 2px 0px var(--colorWhite);
             border-radius:5px;
         }
         :responsive{
-            height:80svh;
-            width:95%;
+            width:100%;
         }`
 
     const wallet = cE("div",style)

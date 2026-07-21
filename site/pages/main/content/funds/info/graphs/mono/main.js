@@ -9,7 +9,7 @@ export default function mono(t,rs){
             align-items:center;
             width:49%;
             height:fit-content;
-            margin:5px;
+            margin:5px 0px;
             box-shadow:0px 0px 2px 0px var(--colorWhite);
             border-radius:5px;
         }

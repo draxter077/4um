@@ -12,6 +12,7 @@ export default function stat(t,v){
             margin:5px;
             border-radius:5px;
             box-shadow:0px 0px 2px 0px var(--colorWhite);
+            overflow:hidden;
         }
         :responsive{
             margin:5px 0px;

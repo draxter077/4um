@@ -19,7 +19,8 @@ export default function graph(b){
             height:95%;
         }
         :responsive{
-            width:50%;
+            width:100%;
+            height:60%;
         }`
 
     const graph = cE("div", style)

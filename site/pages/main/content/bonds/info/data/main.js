@@ -10,7 +10,8 @@ export default function data(b){
         overflow:scroll;
     }
     :responsive{
-        width:50%;
+        width:100%;
+        height:38%;
     }`
 
     const data = cE("cE",style)
