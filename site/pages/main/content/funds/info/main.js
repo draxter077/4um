@@ -25,7 +25,5 @@ export default function info(f){
     info.appendChild(basic(f))
     if(f.carteira && f.carteira.length > 0){info.appendChild(wallet(f.carteira))}
     if(f.informe_diario && f.informe_diario.length > 0){info.appendChild(graphs(f.informe_diario))}
-
-    console.log(f.carteira)
     return(info)
 }

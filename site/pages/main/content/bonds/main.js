@@ -1,6 +1,7 @@
-import bond from "./bond/main.js";
+import search from "./search/main.js"
+import info from "./info/main.js"
 
-export default function bonds(bs) {
+export default function bonds(){
     let style = `
         {
             position:absolute;
@@ -8,18 +9,21 @@ export default function bonds(bs) {
             left:0%;
             display:none;
             flex-direction:row;
-            flex-wrap:wrap;
+            justify-content:space-between;
+            align-items:center;
             width:100%;
             height:100%;
-            overflow:scroll;
+            padding:1%;
             opacity:0;
             transition:all 0.5s;
-        }`;
+        }
+        :responsive{
+            flex-direction:column;
+            overflow:scroll;
+        }`
 
-    const bonds = cE("div", style);
-    bonds.id = "bonds";
-    for (let i = 0; i < bs.length; i++){
-        bonds.appendChild(bond(bs[i]));
-    }
-    return bonds;
+    const bonds = cE("div",style)
+    bonds.id = "bonds"
+    bonds.appendChild(search())
+    return(bonds)
 }

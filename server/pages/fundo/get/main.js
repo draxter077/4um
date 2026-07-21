@@ -1,4 +1,4 @@
-import sql from "../../sql/main.js";
+import sql from "../../../sql/main.js";
 
 export default async function funds(req, res){
     const CNPJ = req.body.cnpj;
@@ -62,6 +62,6 @@ export default async function funds(req, res){
         carteira: carteira
     };
 
-    console.log(`>> 4um/fundo ${CNPJ}`);
+    console.log(`>> 4um/fundo/get ${CNPJ}`);
     return res.status(200).send(fund).end();
 }

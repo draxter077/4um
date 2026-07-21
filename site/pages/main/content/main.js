@@ -3,7 +3,7 @@ import funds from "./funds/main.js"
 import bonds from "./bonds/main.js"
 import stats from "./stats/main.js"
 
-export default function content(d){
+export default function content(){
     let style = `
         {
             position:relative;
@@ -14,8 +14,8 @@ export default function content(d){
     const content = cE("div",style)
     content.id = "content"
     content.appendChild(main())
-    content.appendChild(funds(d.funds))
-    content.appendChild(bonds(d.bonds))
+    content.appendChild(funds())
+    content.appendChild(bonds())
     content.appendChild(stats())
     return(content)
 }

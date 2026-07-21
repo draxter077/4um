@@ -15,16 +15,8 @@ export default async function main(){
         }`
 
     const main = cE("div",style)
-
-    let data = {}
-    await axios.get(`${api_url}/init`)
-        .then(r => {
-            data = r.data;
-        })
-        .catch(r => {alert("ERRO");console.log(r)})
-        
     main.appendChild(head())
-    main.appendChild(content(data))
+    main.appendChild(content())
     main.appendChild(foot())
     return(main)
 }

@@ -5,7 +5,7 @@ export default function data(b){
         display:flex;
         flex-direction:column;
         width:40%;
-        height:100%;
+        height:fit-content;
         padding:10px 15px;
         overflow:scroll;
     }

@@ -45,11 +45,11 @@ export default function fund(f){
         }
 
         let data = {}
-        await axios.post(`${api_url}/fundo`, {cnpj:f.cnpj})
+        await axios.post(`${api_url}/fundo/get`, {cnpj:f.cnpj})
             .then(async r => {
                 data = r.data
             })
-            .catch(async r => {})//alert("ERRO");console.log(r)})
+            .catch(async r => {console.log(r)})
 
         document.getElementById("funds").appendChild(info(data))
         await new Promise(resolve => setTimeout(resolve, 10));

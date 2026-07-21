@@ -1,4 +1,4 @@
-import fund from "../../content/fund/main.js"
+import bond from "../../content/bond/main.js"
 
 export default function search(){
     let style = `
@@ -14,20 +14,20 @@ export default function search(){
         }`
 
     const search = cE("input",style)
-    search.placeholder = `Pesquise em fundos`
+    search.placeholder = `Pesquise em títulos públicos`
 
     search.addEventListener(
         "keypress",
         async function a(e){
             const v = search.value
             if(e.key == "Enter"){
-                document.getElementById("funds_content").innerHTML = ""
-                await axios.post(`${api_url}/fundo/search`, {text:v})
+                document.getElementById("bonds_content").innerHTML = ""
+                await axios.post(`${api_url}/bonds/search`, {text:v})
                     .then(r => {
-                        search.placeholder = `Pesquise em fundos [${r.data.total}]`
-                        const fs = r.data.funds;
-                        for(let i = 0; i < fs.length; i++){
-                            document.getElementById("funds_content").appendChild(fund(fs[i]))
+                        search.placeholder = `Pesquise em títulos públicos [${r.data.total}]`
+                        const bs = r.data.bonds;
+                        for(let i = 0; i < bs.length; i++){
+                            document.getElementById("bonds_content").appendChild(bond(bs[i]))
                         }
                     })
                     .catch(r => {console.log(r)})

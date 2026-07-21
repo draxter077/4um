@@ -16,7 +16,7 @@ export default function graph(b){
         {
             position:relative;
             width:60%;
-            height:100%;
+            height:95%;
         }
         :responsive{
             width:50%;
@@ -38,7 +38,7 @@ export default function graph(b){
     for(let i = 0; i < 5; i++){
         let unit = (highestRent - lowestRent)/4
         let x = "2.5%"
-        let y = (7.5 + 20*i).toString() + "%"
+        let y = (9 + 20*i).toString() + "%"
         let t = Math.round((highestRent - unit*i)*10000)/100 + "%"
         let y2 = (10 + 20*i).toString() + "%"
         graph.appendChild(label(x,y,t))
@@ -51,7 +51,7 @@ export default function graph(b){
         let x = (10 + unitX*(i)).toString() + "%"
         let x2 = (5 + unitX*(i)).toString() + "%"
         let y = "92.5%"
-        if(i == 0 || i == b.calls.length - 1){graph.appendChild(label(x2, y, b.data_referencia))}
+        if(i == 0 || i == b.calls.length - 1){graph.appendChild(label(x2, y, r.hora_referencia))}
         if(i > 0){
             const lR = b.calls[i-1];
             graph.appendChild(curve(

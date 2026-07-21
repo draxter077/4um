@@ -1,7 +1,7 @@
 import search from "./search/main.js"
 import info from "./info/main.js"
 
-export default function funds(fs){
+export default function funds(){
     let style = `
         {
             position:absolute;
@@ -24,6 +24,6 @@ export default function funds(fs){
 
     const funds = cE("div",style)
     funds.id = "funds"
-    funds.appendChild(search(fs))
+    funds.appendChild(search())
     return(funds)
 }

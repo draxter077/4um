@@ -122,7 +122,7 @@ window.cE = function cE(t, stl){
         types = stl.split("}").length - 1
         // Separa os parâmetros do estilo principal
         stls = stl.replaceAll("{","").split("}")[0].split(";") // "atr:value"... o último elemento é "" devido ao split
-        // Organiza os estilos já salvos na tag style
+       // Organiza os estilos já salvos na tag style.
         let stylesInTag = document.getElementsByTagName("style")[1].innerHTML
         stylesInTag = stylesInTag.split("}") // .name{atr:value além do resetCss
         // Separa os nomes dos pares de atributos
