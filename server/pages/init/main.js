@@ -1,7 +1,9 @@
 import sql from "../../sql/main.js"
 
 export default async function init(req, res){
-    let fis = await sql(`SELECT * FROM fi_cadastro WHERE situacao<>'CANCELADA' ORDER BY nome;`);
+    await sql(`CREATE INDEX IF NOT EXISTS idx_fi_carteira_cnpj_data ON fi_carteira (cnpj, data_competencia DESC);`)
+
+    let fis = await sql(`SELECT * FROM fi_cadastro ORDER BY nome;`);
     fis = fis.rows
 
     let funds = []
