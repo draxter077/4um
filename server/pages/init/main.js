@@ -10,10 +10,10 @@ export default async function init(req, res){
     for(let i = 0; i < fis.length; i++){
         const fi = fis[i];
 
-        let informe_diario = await sql(`SELECT * FROM fi_informe WHERE cnpj='${fi.cnpj}' ORDER BY date DESC LIMIT 6`);
+        let informe_diario = await sql(`SELECT * FROM fi_informe WHERE cnpj='${fi.cnpj}' ORDER BY data_competencia DESC LIMIT 6`);
         let carteira_sql = await sql(`SELECT * FROM fi_carteira WHERE cnpj='${fi,cnpj}' 
                                             AND data_competencia=(SELECT MAX(data_competencia) FROM fi_carteira WHERE cnpj='${fi.cnpj})') 
-                                            ORDER BY date DESC`)
+                                            ORDER BY data_competencia DESC`)
 
         carteira_sql = carteira_sql.rows;
         console.log(carteira_sql[0]) // Teste
