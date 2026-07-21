@@ -11,29 +11,8 @@ export default function content(fs){
         }`
 
     const content = cE("div", style)
-
-    const batchSize = 20; 
-    let currentIndex = 0;
-    const total = fs.length;
-
-    function renderBatch() {
-        const fragment = document.createDocumentFragment();
-        const end = Math.min(currentIndex + batchSize, total);
-
-        for (let i = currentIndex; i < end; i++) {
-            if (fs[i]) {
-                fragment.appendChild(fund(fs[i]));
-            }
-        }
-
-        content.appendChild(fragment);
-        currentIndex = end;
-
-        if (currentIndex < total) {
-            setTimeout(renderBatch, 0); 
-        }
+    for(let i = 0; i < fs.length; i++){
+        content.appendChild(fund(fs[i]));
     }
-
-    renderBatch();
     return content;
 }

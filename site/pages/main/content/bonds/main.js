@@ -1,22 +1,25 @@
-export default function stats(d){
+import bond from "./bond/main.js";
+
+export default function bonds(bs) {
     let style = `
         {
             position:absolute;
             top:0%;
             left:0%;
             display:none;
-            flex-direction:column;
-            justify-content:space-between;
-            align-items:center;
+            flex-direction:row;
+            flex-wrap:wrap;
             width:100%;
             height:100%;
-            background:yellow;
+            overflow:scroll;
             opacity:0;
             transition:all 0.5s;
-        }`
+        }`;
 
-    const stats = cE("div",style)
-    stats.id = "bonds"
-    stats.innerHTML = 'Bonds'
-    return(stats)
+    const bonds = cE("div", style);
+    bonds.id = "bonds";
+    for (let i = 0; i < bs.length; i++){
+        bonds.appendChild(bond(bs[i]));
+    }
+    return bonds;
 }

@@ -15,7 +15,7 @@ export default function content(d){
     content.id = "content"
     content.appendChild(main())
     content.appendChild(funds(d.funds))
-    content.appendChild(bonds())
+    content.appendChild(bonds(d.bonds))
     content.appendChild(stats())
     return(content)
 }

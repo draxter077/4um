@@ -29,5 +29,3 @@ export default function info(f){
     console.log(f.carteira)
     return(info)
 }
-
-// carteira [data, tipo aplicação, tipo ativo, descricao ativo, qtd venda, valor venda, qtd aquisição, valor aquisição, qtd posição final, valor mercado posição final, valor custo posição final, id_doc]
