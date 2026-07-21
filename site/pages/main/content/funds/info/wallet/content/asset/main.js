@@ -1,3 +1,4 @@
+import { stringify } from "node:querystring"
 import row from "./row/main.js"
 
 export default function asset(f){
@@ -20,7 +21,7 @@ export default function asset(f){
 
     const asset = cE("div",style)
     asset.appendChild(row("200px",f.tipo))
-    asset.appendChild(row("300px",f.valor))
+    asset.appendChild(row("300px",stringifyNumber(f.valor)))
     asset.appendChild(row("100px",f.porcentagem))
     return(asset)
 }

@@ -9,7 +9,7 @@ export default async function main(AdmZip,sql){
     const d = new Date();
     const nowYear = d.getFullYear();
     let nowMonth = d.getMonth() + 1;
-    process.wtdout.write(`>> Atualizando informes diários   \r`);
+    process.stdout.write(`>> Atualizando informes diários   \r`);
     // Loop para varrer os últimos 6 meses
     for(let i = 1; i < monthness + 1; i++){
         try{

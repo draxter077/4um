@@ -1,5 +1,4 @@
 import main from "./pages/main/main.js"
-import admin from "./pages/admin/main.js"
 
 export function randomName(names){
     const chars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", 
@@ -192,10 +191,9 @@ window.construct = async function construct(d){
         root.innerHTML = ""
         if(window.location.href.split("br/")[1]){
             let path = window.location.href.split("br/")[1]
-            if(path == "admin"){root.appendChild(admin())}
-            else{root.appendChild(main())}
+            if(true){root.appendChild(await main())}
         }
-        else{root.appendChild(main())}
+        else{root.appendChild(await main())}
     }
     else{
         root.style.opacity = 0
@@ -231,7 +229,7 @@ window.stringifyNumber = function stringifyNumber(n){
 }
 
 
-construct()
+await construct()
 
 let l = document.getElementById("loading")
 l.style.opacity = 0

@@ -20,6 +20,5 @@ export default function sectors(){
     sectors.appendChild(sector("./assets/icons/funds.png", "Informações FI", "funds"))
     sectors.appendChild(sector("./assets/icons/bonds.png", "Negociações TP", "bonds"))
     sectors.appendChild(sector("./assets/icons/stats.png", "Estatísticas", "stats"))
-    sectors.appendChild(sector("./assets/icons/tables.png", "Dados brutos", "tables"))
     return(sectors)
 }
