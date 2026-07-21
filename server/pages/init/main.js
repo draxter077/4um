@@ -11,7 +11,7 @@ export default async function init(req, res){
         const fi = fis[i];
 
         let informe_diario = await sql(`SELECT * FROM fi_informe WHERE cnpj='${fi.cnpj}' ORDER BY data_competencia DESC LIMIT 6`);
-        let carteira_sql = await sql(`SELECT * FROM fi_carteira WHERE cnpj='${fi,cnpj}' 
+        let carteira_sql = await sql(`SELECT * FROM fi_carteira WHERE cnpj='${fi.cnpj}' 
                                             AND data_competencia=(SELECT MAX(data_competencia) FROM fi_carteira WHERE cnpj='${fi.cnpj})') 
                                             ORDER BY data_competencia DESC`)
 
