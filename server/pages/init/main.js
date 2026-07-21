@@ -8,7 +8,7 @@ export default async function init(req, res){
 
     let funds = []
     for(let i = 0; i < fis.length; i++){
-        const fi = fis.rows[i];
+        const fi = fis[i];
 
         let informe_diario = await sql(`SELECT * FROM fi_informe WHERE cnpj='${fi.cnpj}' ORDER BY date DESC LIMIT 6`);
         let carteira_sql = await sql(`SELECT * FROM fi_carteira WHERE cnpj='${fi,cnpj}' 

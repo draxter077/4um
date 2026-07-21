@@ -187,22 +187,8 @@ window.cE = function cE(t, stl){
 
 window.construct = async function construct(d){
     const root = document.getElementById("root")
-    if(d == undefined){
-        root.innerHTML = ""
-        if(window.location.href.split("br/")[1]){
-            let path = window.location.href.split("br/")[1]
-            if(true){root.appendChild(await main())}
-        }
-        else{root.appendChild(await main())}
-    }
-    else{
-        root.style.opacity = 0
-        await new Promise(r => setTimeout(r,600))
-        root.innerHTML = ""
-        if(d.page == "admin"){root.appendChild(admin(d.data))}
-        await new Promise(r => setTimeout(r,100))
-        root.style.opacity = 1
-    }
+    root.innerHTML = ""
+    root.appendChild(await main())
 }
 
 window.api_url = "https://ace-chimp-merry.ngrok-free.app/4um"
@@ -227,7 +213,6 @@ window.stringifyNumber = function stringifyNumber(n){
 
     return(`R$ ${newIntegerPart.split("").reverse().join("")},${newFractionalPart}`)
 }
-
 
 await construct()
 
