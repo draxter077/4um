@@ -1,7 +1,7 @@
 import sql from "../../sql/main.js"
 
 export default async function init(req, res){
-    let fis = await sql(`SELECT * FROM fi_cadastro ORDER BY nome;`);
+    let fis = await sql(`SELECT * FROM fi_cadastro WHERE situacao<>'CANCELADA' ORDER BY nome;`);
     fis = fis.rows
 
     let funds = []
@@ -51,7 +51,6 @@ export default async function init(req, res){
             const c = carteira[k];
             carteira[k].porcentagem = Math.round( (c.valor/c.porcentagem)*1000 )/10 + "%";
         }
-        
 
         funds.push(
             {
