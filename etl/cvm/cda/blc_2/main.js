@@ -3,31 +3,47 @@ export default async function main(text, sql) {
     const totalLines = lines.length;
     const BATCH_SIZE = 10000;
     let valuesBatch = [];
+    let cnpjBatchSet = new Set();
+
     for (let i = 1; i < totalLines; i++) {
         if (!lines[i].trim()) continue;
         const infos = lines[i].split(";");
+        const cnpj = infos[1] ? infos[1].trim() : null;
+        if (!cnpj) continue;
+
+        const nome = infos[2] ? infos[2].trim().replace(/'/g, "''") : cnpj;
+        cnpjBatchSet.add(`('${cnpj}', '${nome}')`);
+
         const row = [
-            `'${infos[1]}'`,  // CNPJ_FUNDO_CLASSE
-            `'${infos[3]}'`,  // DT_COMPTC
-            `'${infos[4]}'`,  // TP_APLIC
-            `'${infos[5]}'`,  // TP_ATIVO
-            `'${infos[6]}'`,  // EMISSOR_LIGADO
-            `'${infos[7]}'`,  // TP_NEGOC
-            infos[8]  ? infos[8]  : 'NULL', // QT_VENDA_NEGOC
-            infos[9]  ? infos[9]  : 'NULL', // VL_VENDA_NEGOC
-            infos[10] ? infos[10] : 'NULL', // QT_AQUIS_NEGOC
-            infos[11] ? infos[11] : 'NULL', // VL_AQUIS_NEGOC
-            infos[12] ? infos[12] : 'NULL', // QT_POS_FINAL
-            infos[13] ? infos[13] : 'NULL', // VL_MERC_POS_FINAL
-            infos[14] ? infos[14] : 'NULL', // VL_CUSTO_POS_FINAL
-            `'${infos[15]}'`, // DT_CONFID_APLIC
-            `'${infos[16]}'`, // CNPJ_FUNDO_CLASSE_COTA
-            `'${infos[17]}'`, // ID_SUBCLASSE
-            `'${infos[18]}'`  // NM_FUNDO_CLASSE_SUBCLASSE_COTA
+            `'${cnpj}'`,
+            `'${infos[3]}'`,
+            `'${infos[4]}'`,
+            `'${infos[5]}'`,
+            `'${infos[6]}'`,
+            `'${infos[7]}'`,
+            infos[8]  ? infos[8]  : 'NULL',
+            infos[9]  ? infos[9]  : 'NULL',
+            infos[10] ? infos[10] : 'NULL',
+            infos[11] ? infos[11] : 'NULL',
+            infos[12] ? infos[12] : 'NULL',
+            infos[13] ? infos[13] : 'NULL',
+            infos[14] ? infos[14] : 'NULL',
+            `'${infos[15]}'`,
+            `'${infos[16]}'`,
+            `'${infos[17]}'`,
+            `'${infos[18]}'`
         ];
 
         valuesBatch.push(`(${row.join(',')})`);
+
         if (valuesBatch.length === BATCH_SIZE || i === totalLines - 1) {
+            const cnpjValues = Array.from(cnpjBatchSet).join(',\n');
+            await sql(`
+                INSERT INTO fi_cadastro (cnpj, nome)
+                VALUES ${cnpjValues}
+                ON CONFLICT (cnpj) DO NOTHING;
+            `);
+
             await sql(`INSERT INTO fi_carteira (
                 cnpj, data_competencia, tipo_aplicacao, tipo_ativo, emissor_ligado, tipo_negociacao, 
                 quantidade_venda_negociacao, valor_venda_negociacao, quantidade_aquisicao_negociacao, valor_aquisicao_negociacao,
@@ -36,7 +52,9 @@ export default async function main(text, sql) {
             )
             VALUES ${valuesBatch.join(',\n')}
             ON CONFLICT DO NOTHING;`);
+
             valuesBatch = [];
+            cnpjBatchSet.clear();
         }
     }
 }

@@ -1,7 +1,7 @@
 import title from "./title/main.js"
 import content from "./content/main.js"
 
-export default function wallet(w,pl){
+export default function wallet(w){
     let style = `
         {
             display:flex;
@@ -20,6 +20,6 @@ export default function wallet(w,pl){
 
     const wallet = cE("div",style)
     wallet.appendChild(title())
-    wallet.appendChild(content(w,pl))
+    wallet.appendChild(content(w))
     return(wallet)
 }

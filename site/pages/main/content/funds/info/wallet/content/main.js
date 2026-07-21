@@ -1,6 +1,6 @@
 import asset from "./asset/main.js"
 
-export default function content(w,pl){
+export default function content(w){
     let style = `
         {
             display:flex;
@@ -15,6 +15,10 @@ export default function content(w,pl){
         }`
 
     const content = cE("div",style)
+    let pl = 0;
+    for(let i = 0; i < w.length; i++){
+        pl += w[i].valor;
+    }
     for(let i = 0; i < w.length; i++){
         content.appendChild(asset(w[i],pl))
     }

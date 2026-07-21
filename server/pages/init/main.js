@@ -2,10 +2,14 @@ import sql from "../../sql/main.js";
 
 export default async function init(req, res) {
     const fisResult = await sql(`
-        SELECT DISTINCT c.cnpj, c.nome 
+        SELECT c.cnpj, c.nome 
         FROM fi_cadastro c
-        INNER JOIN fi_informe i ON c.cnpj = i.cnpj
-        INNER JOIN fi_carteira ca ON c.cnpj = ca.cnpj
+        WHERE EXISTS (
+            SELECT 1 FROM fi_informe i WHERE i.cnpj = c.cnpj
+        )
+        OR EXISTS (
+            SELECT 1 FROM fi_carteira ca WHERE ca.cnpj = c.cnpj
+        )
         ORDER BY c.nome;
     `);
 

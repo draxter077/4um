@@ -45,7 +45,6 @@ export default async function main(AdmZip,sql){
     const nowYear = d.getFullYear();
     let nowMonth = d.getMonth() + 1;
 
-    process.stdout.write(">> Atualizando CDA    \r");
     // Loop para varrer os últimos 6 meses, a partir do mês anterior
     for(let i = 0; i < monthness; i++){
         let refYear = nowYear;
@@ -65,6 +64,7 @@ export default async function main(AdmZip,sql){
                 for(let j = 0; j < archives.length; j++){ // nem sempre terão todos os arquivos
                     const name = archives[j].entryName;
                     const text = archives[j].getData().toString('latin1').replaceAll('"','').replaceAll("'","").replaceAll("\r","");
+                    process.stdout.write(`>> Atualizando CDA ${name}      \r`)
                     if(name.includes("BLC_1_")){await blc_1(text,sql);}
                     else if(name.includes("BLC_2_")){await blc_2(text,sql);}
                     else if(name.includes("BLC_3_")){await blc_3(text,sql);}

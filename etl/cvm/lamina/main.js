@@ -9,7 +9,7 @@ export default async function main(AdmZip,sql){
     const d = new Date();
     const nowYear = d.getFullYear();
     let nowMonth = d.getMonth() + 1;
-    console.log(">> Atualizando rentabilidades");
+
     // Loop para varrer os últimos 6 meses
     for(let i = 0; i < monthness; i++){
         try{
@@ -20,6 +20,7 @@ export default async function main(AdmZip,sql){
                 refYear -= 1;
             }
             if(refMonth < 10){refMonth = "0" + refMonth;}
+            process.stdout.write(`>> Atualizando lâmina ${refYear}${refMonth}       \r`);
             const response = await fetch(`https://dados.cvm.gov.br/dados/FI/DOC/LAMINA/DADOS/lamina_fi_${refYear}${refMonth}.zip`);
             const bufferPuro = await response.arrayBuffer();
             const buffer = Buffer.from(bufferPuro); //Conversão para o formato Buffer que o NodeJS e o adm-zip entendem
@@ -68,5 +69,5 @@ export default async function main(AdmZip,sql){
             console.log(`ERRO: ${error.message}`);
         }
     }
-    console.log(">> Rentabilidades atualizadas  ");
+    console.log(">> Lâmina atualizada  ");
 }
