@@ -10,7 +10,7 @@ export default function button() {
             font-size:16px;
             font-weight:900;
             text-align:center;
-            background:black;
+            background:var(--colorBlue) !important;
             color:var(--colorWhite);
             border-radius:5px;
             cursor:pointer;

@@ -10,8 +10,8 @@ export default function submit(){
             font-size:16px;
             font-weight:900;
             text-align:center;
-            background:white;
-            color:black;
+            background:var(--colorBlue) !important;
+            color:var(--colorWhite);
             border-radius:5px;
             cursor:pointer;
         }
@@ -23,7 +23,7 @@ export default function submit(){
             width:40px;
             height:50%;
             border-radius:10px;
-            background:black;
+            background:var(--colorWhite);
             animation:loading2 2s linear 0s infinite alternate;
         }`
 
@@ -45,12 +45,12 @@ export default function submit(){
                 //         if(r.response.status == 403){
                 //             is[1].style = "box-shadow:0px 0px 3px 0px red"
                 //             await new Promise(r => setTimeout(r,600))
-                //             is[1].style = "box-shadow:0px 0px 3px 0px white"
+                //             is[1].style = "box-shadow:0px 0px 3px 0px var(--colorBlue)"
                 //         }
                 //         else if(r.response.status == 404){
                 //             is[0].style = "box-shadow:0px 0px 3px 0px red"
                 //             await new Promise(r => setTimeout(r,600))
-                //             is[0].style = "box-shadow:0px 0px 3px 0px white"
+                //             is[0].style = "box-shadow:0px 0px 3px 0px var(--colorBlue)"
                 //         }
                 //         else{
                 //             submit.innerHTML = "Tente mais tarde"
@@ -61,12 +61,12 @@ export default function submit(){
             else if(is[0].value){
                 is[1].style = "box-shadow:0px 0px 3px 0px red"
                 await new Promise(r => setTimeout(r,600))
-                is[1].style = "box-shadow:0px 0px 3px 0px white"
+                is[1].style = "box-shadow:0px 0px 3px 0px var(--colorBlue)"
             }
             else{
                 is[0].style = "box-shadow:0px 0px 3px 0px red"
                 await new Promise(r => setTimeout(r,600))
-                is[0].style = "box-shadow:0px 0px 3px 0px white"
+                is[0].style = "box-shadow:0px 0px 3px 0px var(--colorBlue)"
             }
             submit.innerHTML = "Entrar"
             submit.addEventListener("click",a)

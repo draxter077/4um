@@ -9,6 +9,6 @@ export default function copyright(){
         }`
 
     const copyright = cE("div",style)
-    copyright.innerHTML = `00.000.000/0001-00 © ${new Date().getFullYear()} | Todos os direitos reservados`
+    copyright.innerHTML = `62.797.808/0001-41 © ${new Date().getFullYear()} | Todos os direitos reservados`
     return(copyright)
 }

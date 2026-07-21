@@ -1,4 +1,6 @@
 import payments from "./payments/main.js"
+import orders from "./orders/main.js"
+import clients from "./clients/main.js"
 
 export default function databases(d){
     let style = `
@@ -18,5 +20,7 @@ export default function databases(d){
 
     const databases = cE("div",style)
     databases.appendChild(payments())
+    databases.appendChild(orders())
+    databases.appendChild(clients())
     return(databases)
 }

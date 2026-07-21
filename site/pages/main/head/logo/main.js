@@ -1,16 +1,17 @@
 export default function logo(){
     let style = `
         {
-            height:50px;
-            border:2px solid var(--colorWhite);
+            height:70px;
+            background:var(--colorWhite);
+            padding:10px 20px;
+            border-radius:0px 0px 5px 5px;
         }
         :responsive{
-            height:75px;
-            margin:2.5% 0px;
+            height:50px;
         }`
 
     const logo = cE("img",style)
-    logo.src = "/assets/"
-    logo.alt = "Logotipo da NomeEmpresa"
+    logo.src = "./assets/logo.png"
+    logo.alt = "Logotipo da 4UM"
     return(logo)
 }

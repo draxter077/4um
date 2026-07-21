@@ -7,7 +7,6 @@ async function main(){
     await anbima(sql);
 
     console.log(">> ETL concluído")
-    return true;
 }
 
 await main();

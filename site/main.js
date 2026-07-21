@@ -72,17 +72,21 @@ const resetCss = `
     :root{
     	--colorWhite:rgb(245,245,245);
     	--colorBlack:rgb(20,20,20);
-        --colorBluePh:rgb(56,182,255);
-        --colorGreenWhatsApp:rgb(37,211,102);
+        --colorGreen:rgb(140,198,63);
     }
     @font-face{
         font-family:"Garet";
         font-display:swap;
         src:url("https://www.ph.net.br/assets/font/Garet-Book.otf");
     }
+    @font-face{
+        font-family:"Montserrat";
+        font-display:swap;
+        src:url("https://wor.ph.net.br/assets/font/Montserrat-Regular.ttf");
+    }
     body{
     	box-sizing:border-box;
-    	font-family:system-ui;
+    	font-family:"Montserrat",system-ui;
     	background:var(--colorBlack);
     	cursor:default;
 	    user-select:none;
@@ -203,10 +207,29 @@ window.construct = async function construct(d){
     }
 }
 
-window.api_url = "https://ace-chimp-merry.ngrok-free.app/"
-window.whatsapp_url = "https://wa.me/"
-window.instagram_url = "https://www.instagram.com/"
+window.api_url = "https://ace-chimp-merry.ngrok-free.app/4um"
 axios.defaults.headers.common["ngrok-skip-browser-warning"] = "69420"
+
+window.stringifyNumber = function stringifyNumber(n){
+    let numberParts = n.toString().split(".")
+    let integerPart = numberParts[0]
+    integerPart = integerPart.split("").reverse().join(""); // 1234 => 4321, para ficar mais fácil adicionar os pontos nas centenas
+    let newIntegerPart = "", newFractionalPart = ""
+
+    for(let i = 0; i < integerPart.length; i++){
+        newIntegerPart += integerPart[i]
+        if((i + 1)%3 == 0 && i != integerPart.length - 1){newIntegerPart += "."}
+    }
+
+    if(numberParts.length > 1){ // Verifica se há casa decimal
+        newFractionalPart = (Math.floor(Number("0." + numberParts[1])*100)).toString() // Formata para dois algarismos significativos
+        if(newFractionalPart.length == 1){newFractionalPart = "0" + newFractionalPart} // Adciona o zero a esquerda caso menor do que 10
+    }
+    else{newFractionalPart = "00"} // Não havendo, atribui 00
+
+    return(`R$ ${newIntegerPart.split("").reverse().join("")},${newFractionalPart}`)
+}
+
 
 construct()
 

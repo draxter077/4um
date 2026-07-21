@@ -6,7 +6,7 @@ export default function logo(){
         }`
 
     const logo = cE("img",style)
-    logo.src = "/assets/"
-    logo.alt = "Logotipo da NomeEmpresa"
+    logo.src = "/assets/logo.jpg"
+    logo.alt = "Logotipo da Ph Web Software"
     return(logo)
 }

@@ -1,63 +1,196 @@
 import head from "./head/main.js"
-import outdoor from "./outdoor/main.js"
-import who from "./who/main.js"
-import services from "./services/main.js"
-import method from "./method/main.js"
-import faq from "./faq/main.js"
+import content from "./content/main.js"
 import foot from "./foot/main.js"
-import ph from "./ph/main.js"
 
 export default function main(){
-    const SD = { // Padrão em todo main de página
-        "@context":"https://schema.org",
-        "@type":"Organization",
-        "name":"",
-        "alternateName":"",
-        "url":"",
-        "logo":"",
-        "taxID":"",
-        "image":"",
-        "email":"",
-        "telephone":"",
-        "slogan":"",
-        "description":"",
-        "areaServed":"BR",
-        "address":{
-            "@type":"PostalAddress",
-            "streetAddress":"",
-            "addressLocality":"",
-            "addressRegion":"",
-            "addressCountry":"BR",
-            "postalCode":""
-        },
-        "sameAs":[
-            "",
-            instagram_url,
-            whatsapp_url
-        ]
-    }
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.text = JSON.stringify(SD)
-    document.head.appendChild(script)
-
     let style = `
         {
+            position:relative;
             display:flex;
             flex-direction:column;
+            justify-content:space-between;
             align-items:center;
             width:100%;
-            height:fit-content;
+            height:100svh;
         }`
 
     const main = cE("div",style)
     main.appendChild(head())
-    main.appendChild(outdoor())
-    main.appendChild(who())
-    main.appendChild(services())
-    main.appendChild(method())
-    main.appendChild(faq())
+    main.appendChild(content(
+        {
+            funds:[
+                {
+                    cnpj:"00.000.000/0001-00",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                },
+                {
+                    cnpj:"00.000.000/0001-01",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                },
+                {
+                    cnpj:"00.000.000/0001-02",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                },
+                {
+                    cnpj:"00.000.000/0001-03",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                },
+                {
+                    cnpj:"00.000.000/0001-04",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                },
+                {
+                    cnpj:"00.000.000/0001-05",
+                    nome:"FUNDO DE INVESTIMENTO PIPIPI POPOPO LTDA",
+                    situacao:"ABERTO",
+                    data_situacao:"00/00/0000",
+                    classe:"Multimercado",
+                    classe_anbima:"0123456",
+                    codigo_cvm:"1234567",
+                    rentabilidade:"Referência",
+                    condominio:"ABERTO",
+                    taxa_administracao:"0.5",
+                    diretor:"Diretor do Fundo",
+                    gestor:"Gestor do Fundo",
+                    auditor:"Auditor do Fundo",
+                    controlador:"Controlador do Fundo",
+                    informe_diario:[
+                        {data_competencia:"2026-06-01",valor_total:176000,valor_quota:100.50,valor_patrimonio_liquido:15005000,captacao_dia:1500},
+                        {data_competencia:"2026-06-02",valor_total:176100,valor_quota:100.45,valor_patrimonio_liquido:16000000,captacao_dia:0},
+                        {data_competencia:"2026-06-03",valor_total:176300,valor_quota:100.30,valor_patrimonio_liquido:18004000,captacao_dia:15000},
+                        {data_competencia:"2026-06-04",valor_total:175700,valor_quota:100.13,valor_patrimonio_liquido:15400000,captacao_dia:100},
+                        {data_competencia:"2026-06-05",valor_total:177000,valor_quota:100.60,valor_patrimonio_liquido:19000000,captacao_dia:500},
+                        {data_competencia:"2026-06-06",valor_total:176400,valor_quota:100.47,valor_patrimonio_liquido:21000000,captacao_dia:150}
+                    ],
+                    carteira:[
+                        {tipo:"Cotas de Fundos", valor:"R$ 12.000.000,00", porcentagem:"95%"},
+                        {tipo:"Valores a Receber", valor:"R$ 12.000,00", porcentagem:"5%"}
+                    ]
+                }
+            ]
+        }
+    ))
     main.appendChild(foot())
-    main.appendChild(ph())
+    //main.appendChild(menu())
     return(main)
 }

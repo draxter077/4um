@@ -12,7 +12,7 @@ export default function forms(){
         }
         :responsive{
             margin:10% 0px 0px 0px;
-            width:95%;
+            width:66%;
         }`
 
     const forms = cE("div",style)

@@ -6,13 +6,13 @@ export default function payment(){
             display:flex;
             flex-direction:row;
             align-items:center;
-            justify-content:space-between;
+            justify-content:space-around;
+            flex-wrap:wrap;
             font-size:16px;
             color:var(--colorWhite);
             padding:2px 5px;
             border-bottom:1px solid var(--colorWhite);
-            width:fit-content;
-            min-width:100%;
+            width:100%;
         }`
 
     const payment = cE("div",style)

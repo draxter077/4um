@@ -4,9 +4,9 @@ export default function input(p){
             width:100%;
             font-size:14px;
             padding:10px 15px;
-            background:white;
-            color:black;
-            box-shadow:0px 0px 3px 0px white;
+            background:var(--colorDarkerBlue);
+            color:var(--colorWhite);
+            box-shadow:0px 0px 3px 0px var(--colorBlue);
             border-radius:10px;
             margin:5px 0px;
             transition:all 0.5s;
@@ -17,6 +17,6 @@ export default function input(p){
 
     const input = cE("input",style)
     input.placeholder = p
-    if(p=="Senha"){input.type = "password"}
+
     return(input)
 }

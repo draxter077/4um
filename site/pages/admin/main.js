@@ -8,7 +8,7 @@ export default function admin(data){
         }`
 
     const admin = cE("div", style)
-    document.title = "Admin"
+    document.title = "Admin Ph"
     if(data){
         admin.appendChild(main(data))
     }

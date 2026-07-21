@@ -8,6 +8,6 @@ export default function text(){
         }`
 
     const text = cE("div",style)
-    text.innerHTML = `NomeEmpresa`
+    text.innerHTML = `Ph Web Software`
     return(text)
 }

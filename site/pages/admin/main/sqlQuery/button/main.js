@@ -10,8 +10,8 @@ export default function button() {
             font-size:16px;
             font-weight:900;
             text-align:center;
-            background:white;
-            color:black;
+            background:var(--colorBlue) !important;
+            color:var(--colorWhite);
             border-radius:5px;
             cursor:pointer;
         }
@@ -23,7 +23,7 @@ export default function button() {
             width:40px;
             height:50%;
             border-radius:10px;
-            background:black;
+            background:var(--colorWhite);
             animation:loading2 2s linear 0s infinite alternate;
         }`
 
@@ -56,10 +56,13 @@ export default function button() {
                     // axios.post(`${api_url}/admin/sqlQuery`,{query:query})
                     // .then(async r => {
                     //     console.log(r.data)
-                    //     input.innerHTML = `Enviado | ${query}`
+                    //     button.innerHTML = `Enviado | ${query}`
+                    //     await new Promise(r => setTimeout(r,2000))
+                    //     button.innerHTML = "Enviar"
+                    //     e.target.parentElement.children[0].value = ""
                     // })
                     // .catch(async r => {
-                    //     input.innerHTML = "Tente mais tarde"
+                    //     button.innerHTML = "Tente mais tarde"
                     // })
                     input.value = `Enviado | ${query}`
                 }

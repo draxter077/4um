@@ -8,9 +8,9 @@ export default function payments(){
             flex-direction:column;
             width:33%;
             height:100%;
-            background:green;
+            background:var(--colorDarkerBlue);
             padding:10px 15px;
-            box-shadow:0px 0px 3px 0px green;
+            box-shadow:0px 0px 3px 0px var(--colorBlue);
             border-radius:10px;
         }
         :responsive{
