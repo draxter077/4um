@@ -4,8 +4,6 @@ export default async function init(req, res){
     let fis = await sql(`SELECT * FROM fi_cadastro ORDER BY nome;`);
     fis = fis.rows
 
-    console.log(fis[0]) // Teste
-
     let funds = []
     for(let i = 0; i < fis.length; i++){
         const fi = fis[i];
@@ -16,7 +14,6 @@ export default async function init(req, res){
                                             ORDER BY data_competencia DESC`)
 
         carteira_sql = carteira_sql.rows;
-        console.log(carteira_sql[0]) // Teste
         let carteira = []
         for(let j = 0; j < carteira_sql.length; j++){
             const c = carteira_sql[j];
@@ -44,6 +41,7 @@ export default async function init(req, res){
                                 porcentagem:c.valor_patrimonio_liquido
                             }
                         )
+                        break;
                     }
                 }
             }
