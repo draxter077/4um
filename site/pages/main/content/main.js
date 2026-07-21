@@ -13,9 +13,9 @@ export default function content(d){
 
     const content = cE("div",style)
     content.id = "content"
-    content.appendChild(main(d))
+    content.appendChild(main())
     content.appendChild(funds(d.funds))
-    content.appendChild(bonds(d))
-    content.appendChild(stats(d))
+    content.appendChild(bonds())
+    content.appendChild(stats())
     return(content)
 }

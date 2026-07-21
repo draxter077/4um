@@ -1,4 +1,4 @@
-export default function search(){
+export default function search(l){
     let style = `
         {
             width:100%;
@@ -12,7 +12,7 @@ export default function search(){
         }`
 
     const search = cE("input",style)
-    search.placeholder = "Pesquise em fundos [256]"
+    search.placeholder = `Pesquise em fundos [${l}]`
 
     search.addEventListener(
         "input",

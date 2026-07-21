@@ -18,10 +18,10 @@ export default async function main(){
 
     let data = {}
     await axios.get(`${api_url}/init`)
-        .then(async r => {
-            data = r.data
+        .then(r => {
+            data = r.data;
         })
-        .catch(async r => {alert("ERRO");console.log(r)})
+        .catch(r => {alert("ERRO");console.log(r)})
         
     main.appendChild(head())
     main.appendChild(content(data))

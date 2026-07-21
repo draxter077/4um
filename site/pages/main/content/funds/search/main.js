@@ -19,7 +19,7 @@ export default function search(ps){
 
     const search = cE("div",style)
     search.id = "search"
-    search.appendChild(head())
+    search.appendChild(head(ps.length))
     search.appendChild(content(ps))
     return(search)
 }

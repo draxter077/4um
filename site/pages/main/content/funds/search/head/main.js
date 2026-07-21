@@ -1,6 +1,6 @@
 import search from "./search/main.js"
 
-export default function head(){
+export default function head(l){
     let style = `
         {
             display:flex;
@@ -11,6 +11,6 @@ export default function head(){
         }`
 
     const head = cE("div",style)
-    head.appendChild(search())
+    head.appendChild(search(l))
     return(head)
 }

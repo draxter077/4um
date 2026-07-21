@@ -29,8 +29,10 @@ export default function basic(f){
     basic.appendChild(stat("Gestor", f.gestor ? f.gestor : "-"))
     basic.appendChild(stat("Auditor", f.auditor ? f.auditor : "-"))
     basic.appendChild(stat("Controlador", f.controlador ? f.controlador : "-"))
-    basic.appendChild(stat("Patrimônio líquido", f.informe_diario[5].valor_patrimonio_liquido ? stringifyNumber(f.informe_diario[5].valor_patrimonio_liquido) : "-"))
-    basic.appendChild(stat("Valor total", f.informe_diario[5].valor_total ? stringifyNumber(f.informe_diario[5].valor_total) : "-"))
-    basic.appendChild(stat("Valor quota", f.informe_diario[5].valor_quota ? stringifyNumber(f.informe_diario[5].valor_quota) : "-"))
+    if(f.informe_diario && f.informe_diario.length > 0){
+        basic.appendChild(stat("Patrimônio líquido", f.informe_diario[f.informe_diario.length-1].valor_patrimonio_liquido ? stringifyNumber(f.informe_diario[f.informe_diario.length-1].valor_patrimonio_liquido) : "-"))
+        basic.appendChild(stat("Valor total", f.informe_diario[f.informe_diario.length-1].valor_total ? stringifyNumber(f.informe_diario[f.informe_diario.length-1].valor_total) : "-"))
+        basic.appendChild(stat("Valor quota", f.informe_diario[f.informe_diario.length-1].valor_quota ? stringifyNumber(f.informe_diario[f.informe_diario.length-1].valor_quota) : "-"))
+    }
     return(basic)
 }

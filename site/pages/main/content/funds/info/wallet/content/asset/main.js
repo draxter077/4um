@@ -1,7 +1,8 @@
-import { stringify } from "node:querystring"
 import row from "./row/main.js"
 
-export default function asset(f){
+export default function asset(f,pl){
+    const porcentagem = Math.round( (f.valor/pl)*10000 )/100 + "%"
+
     let style = `
         {
             position:relative;
@@ -13,15 +14,15 @@ export default function asset(f){
             flex-wrap:wrap;
             font-size:16px;
             color:var(--colorWhite);
-            background:linear-gradient(to right, rgb(140,198,63,0.5) ${f.porcentagem}, var(--colorBlack) ${f.porcentagem});
+            background:linear-gradient(to right, rgb(140,198,63,0.5) ${porcentagem}, var(--colorBlack) ${porcentagem});
             padding:2px 5px;
             border-bottom:1px solid var(--colorWhite);
             width:100%;
         }`
 
     const asset = cE("div",style)
-    asset.appendChild(row("200px",f.tipo))
+    asset.appendChild(row("300px",f.tipo))
     asset.appendChild(row("300px",stringifyNumber(f.valor)))
-    asset.appendChild(row("100px",f.porcentagem))
+    asset.appendChild(row("100px",porcentagem))
     return(asset)
 }

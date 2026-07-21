@@ -38,6 +38,8 @@ export default async function main(AdmZip,sql){
         NULLS NOT DISTINCT
     ;`)
 
+    await sql(`CREATE INDEX IF NOT EXISTS idx_fi_carteira_cnpj_data ON fi_carteira (cnpj, data_competencia DESC);`)
+
     const monthness = 6;
     const d = new Date();
     const nowYear = d.getFullYear();

@@ -1,83 +1,14 @@
-import sql from "../../sql/main.js"
+import sql from "../../sql/main.js";
 
-export default async function init(req, res){
-    await sql(`CREATE INDEX IF NOT EXISTS idx_fi_carteira_cnpj_data ON fi_carteira (cnpj, data_competencia DESC);`)
+export default async function init(req, res) {
+    const fisResult = await sql(`
+        SELECT DISTINCT c.cnpj, c.nome 
+        FROM fi_cadastro c
+        INNER JOIN fi_informe i ON c.cnpj = i.cnpj
+        INNER JOIN fi_carteira ca ON c.cnpj = ca.cnpj
+        ORDER BY c.nome;
+    `);
 
-    let fis = await sql(`SELECT * FROM fi_cadastro ORDER BY nome;`);
-    fis = fis.rows
-
-    let funds = []
-    for(let i = 0; i < fis.length; i++){
-        const fi = fis[i];
-
-        let informe_diario = await sql(`SELECT * FROM fi_informe WHERE cnpj='${fi.cnpj}' ORDER BY data_competencia DESC LIMIT 6`);
-        let carteira_sql = await sql(`SELECT * FROM fi_carteira WHERE cnpj='${fi.cnpj}' AND data_competencia=(SELECT MAX(data_competencia) FROM fi_carteira WHERE cnpj='${fi.cnpj}')`)
-
-        carteira_sql = carteira_sql.rows;
-        let carteira = []
-        for(let j = 0; j < carteira_sql.length; j++){
-            const c = carteira_sql[j];
-            if(j == 0){
-                carteira.push(
-                    {
-                        tipo:c.tipo_aplicacao,
-                        valor:c.valor_mercado_posicao_final,
-                        porcentagem:c.valor_patrimonio_liquido
-                    }
-                )
-            }
-            else{
-                for(let k = 0; k < carteira.length; k++){
-                    const cTest = carteira[k];
-                    if(cTest.tipo == c.tipo_aplicacao){
-                        carteira[k].valor += c.valor_mercado_posicao_final;
-                        break;
-                    }
-                    else if(k == carteira.length - 1){
-                        carteira.push(
-                            {
-                                tipo:c.tipo_aplicacao,
-                                valor:c.valor_mercado_posicao_final,
-                                porcentagem:c.valor_patrimonio_liquido
-                            }
-                        )
-                        break;
-                    }
-                }
-            }
-        }
-
-        for(let k = 0; k < carteira.length; k++){
-            const c = carteira[k];
-            carteira[k].porcentagem = Math.round( (c.valor/c.porcentagem)*1000 )/10 + "%";
-        }
-
-        funds.push(
-            {
-                cnpj:fi.cnpj,
-                nome:fi.nome,
-                situacao:fi.situacao,
-                data_situacao:fi.data_situacao,
-                classe:fi.classe,
-                classe_anbima:fi.classe_anbima,
-                codigo_cvm:fi.codigo_cvm,
-                rentabilidade:fi.rentabilidade,
-                condominio:fi.condominio,
-                taxa_administracao:fi.taxa_administracao,
-                diretor:fi.diretor,
-                gestor:fi.gestor,
-                auditor:fi.auditor,
-                controlador:fi.controlador,
-                informe_diario:informe_diario.rows,
-                carteira:carteira
-            }
-        )
-    }
-
-    const data = {
-        funds:funds
-    }
-
-    console.log(`>> 4um/init`)
-    res.status(200).send(data).end()
+    console.log(`>> 4um/init`);
+    res.status(200).send({funds:fisResult.rows}).end();
 }

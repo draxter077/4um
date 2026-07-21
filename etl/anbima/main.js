@@ -3,7 +3,7 @@ import firefox from "selenium-webdriver/firefox.js";
 
 async function test(messy, driver){
     try{
-        await driver.wait(until.elementLocated(By.xpath(`/html/body/div[${messy}]/main/section/div[2]/table/tbody/tr[1]`)), 30000);
+        await driver.wait(until.elementLocated(By.xpath(`/html/body/div[${messy}]/main/section/div[2]/table/tbody/tr[1]`)), 180000);
     }
     catch(erro){
         throw erro;

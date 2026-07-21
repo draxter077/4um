@@ -43,7 +43,15 @@ export default function fund(f){
             funds.removeChild(funds.children[1])
             await new Promise(resolve => setTimeout(resolve, 10));
         }
-        document.getElementById("funds").appendChild(info(f))
+
+        let data = {}
+        await axios.post(`${api_url}/fundo`, {cnpj:f.cnpj})
+            .then(async r => {
+                data = r.data
+            })
+            .catch(async r => {})//alert("ERRO");console.log(r)})
+
+        document.getElementById("funds").appendChild(info(data))
         await new Promise(resolve => setTimeout(resolve, 10));
         document.getElementById("funds").children[1].style.opacity = 1;
     })
