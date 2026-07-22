@@ -7,7 +7,7 @@ export default async function stats(req, res){
     let answer2 = "";
     try{
         const answer1 = await ollama.generate({
-            model:'qwen2.5-coder:72b-cloud',
+            model:'gemma4:31b-cloud',
             prompt:`Você tem acesso a uma base de dados completa e imensa sobre os fundos de investimento brasileiros e dados de negociação de títulos públicos. Essa base é composta por 5 tabelas.
                 A primeira segue esta query de criação: "CREATE TABLE IF NOT EXISTS fi_cadastro (
                     cnpj VARCHAR PRIMARY KEY,tipo VARCHAR,nome VARCHAR,data_registro VARCHAR,data_constituicao VARCHAR,
@@ -61,10 +61,9 @@ export default async function stats(req, res){
         let aiQuery = await sql(answer1.response.replaceAll("`","").replaceAll("sql",""));
         aiQuery = aiQuery.rows
         answer2 = await ollama.generate({
-            model:'qwen2.5-coder:72b-cloud',
+            model:'gemma4:31b-cloud',
             prompt:`Desejando responder a isto "${prompt}", você criou esta query SQL "${answer1.response.replaceAll("`","").replaceAll("sql","")}" como forma de fundamentar e estruturar sua resposta.
-                Essa query retornou isto "${JSON.stringify(aiQuery)}". Qual é, assim, sua resposta? Sua resposta deve ser fundamentada e compacta e direta, sem repetições.
-                Não use #, * e caracteres similares.`,
+                Essa query retornou isto "${JSON.stringify(aiQuery)}". Qual é, assim, sua resposta? Não use #, * e caracteres similares.`,
             stream:false
         })
     }
