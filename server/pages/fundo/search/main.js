@@ -8,7 +8,7 @@ export default async function searchFunds(req, res){
         FROM fi_cadastro
         WHERE cnpj ILIKE '%${termo}%' OR nome ILIKE '%${termo}%'
         ORDER BY RANDOM()
-        LIMIT 50;
+        LIMIT 500;
     `);
     const fundsList = result.rows;
     const total = await sql(`SELECT COUNT(*) FROM fi_cadastro;`)

@@ -15,7 +15,7 @@ export default async function searchBonds(req, res){
                 OR REGEXP_REPLACE(data_vencimento, '[^0-9]', '', 'g') ILIKE '%${termoApenasNumeros}%'
         ) AS titulos_unicos
         ORDER BY RANDOM()
-        LIMIT 50;
+        LIMIT 500;
     `);
     const bondsList = result.rows;
     const total = await sql(`SELECT COUNT(DISTINCT nome_titulo || '-' || data_vencimento) FROM negociacao_titulos_publicos;`)
