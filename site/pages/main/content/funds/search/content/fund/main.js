@@ -29,13 +29,6 @@ export default function fund(f){
 
     fund.addEventListener("click", async () => {
         const funds = document.getElementById("funds");
-        const ops = document.getElementById("funds_content").children;
-        for(let i = 0; i < ops.length; i++){
-            ops[i].style.background = "var(--colorBlack)";
-            if(ops[i].innerHTML.includes(f.cnpj)){
-                ops[i].style.background = "var(--colorGreen)"
-            }
-        }
         
         if(funds.children[1]){
             funds.children[1].style.opacity = 0;
