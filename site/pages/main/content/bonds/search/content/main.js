@@ -9,5 +9,6 @@ export default function content(){
         }`
 
     const content = cE("div", style)
+    content.id = "bonds_content"
     return content;
 }
