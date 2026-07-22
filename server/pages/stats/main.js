@@ -51,9 +51,11 @@ export default async function stats(req, res){
                     indicativo_inferior FLOAT, valor_ultima FLOAT, valor_oferta_compra FLOAT, valor_oferta_venda FLOAT,
                     numero_negocios FLOAT, quantidade_negociada FLOAT, volume_negociado FLOAT, flag_violacao VARCHAR".
                     Os dados dela foram extraídos de "https://data.anbima.com.br/datasets/data-titulos-publicos-dados-negociacao-publico".
-                Com base nessas informações, crie uma query SQL cujo resultado seja relevante para responder a esta pergunta: "${prompt}".
+                Seu objetivo é responder a este pedido: "${prompt}". Para tanto, você pode usar recursos como internet, sua base de dados e essa base de dados SQL que te falei.
+                Agora, seu papel é decidir se uma query SQL nessa base de dados pode te ajudar a encontrar uma resposta para o pedido.
+                Se sim, crie uma query SQL cujo resultado seja relevante para a resolução do pedido. Se não, crie uma query qualquer apenas para pular a execução.
                 Retorne somente a query, sem nenhum outro comentário. A sua query não pode conter comandos DELETE, INSERT INTO ou UPDATE; ela não pode ter quebras de linha. Atente-se porque o resultado da query
-                será usado em prompt posterior, que deve ficar menor do que o limite "model maximum context length: 262144". Atente-se para usar somente colunas existentes.`,
+                será usado em prompt posterior, que deve ficar menor do que o limite "model maximum context length: 262144".`,
             stream:false
         })
         let aiQuery = await sql(answer1.response.replaceAll("`","").replaceAll("sql",""));
