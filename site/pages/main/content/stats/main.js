@@ -1,4 +1,6 @@
-export default function stats(d){
+import chat from "./chat/main.js"
+
+export default function stats(){
     let style = `
         {
             position:absolute;
@@ -6,17 +8,16 @@ export default function stats(d){
             left:0%;
             display:none;
             flex-direction:column;
-            justify-content:space-between;
+            justify-content:center;
             align-items:center;
             width:100%;
             height:100%;
-            background:yellow;
             opacity:0;
             transition:all 0.5s;
         }`
 
     const stats = cE("div",style)
     stats.id = "stats"
-    stats.innerHTML = 'Human Resources'
+    stats.appendChild(chat())
     return(stats)
 }

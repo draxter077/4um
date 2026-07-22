@@ -81,7 +81,7 @@ const resetCss = `
     @font-face{
         font-family:"Montserrat";
         font-display:swap;
-        src:url("https://wor.ph.net.br/assets/font/Montserrat-Regular.ttf");
+        src:url("https://4um.ph.net.br/assets/font/Montserrat-Regular.ttf");
     }
     body{
     	box-sizing:border-box;

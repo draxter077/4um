@@ -10,7 +10,3 @@ async function main(){
 }
 
 await main();
-
-// estratégia de big player (volume, quantiade, numero), z-score, spread, última, ativos mais comprados,
-// composição de cada fundo, ativos com base nas maiores rentabilidades
-// front end jutnar por gestor

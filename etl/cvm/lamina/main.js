@@ -1,7 +1,7 @@
 export default async function main(AdmZip,sql){
     await sql(`CREATE TABLE IF NOT EXISTS fi_rentabilidades (
         cnpj VARCHAR, id_subclasse VARCHAR, data_competencia VARCHAR, tipo VARCHAR,
-        referencia VARCHAR, rentabilidade FLOAT, variacao_referencia FLOAT, perfomance FLOAT, observacao VARCHAR,
+        referencia VARCHAR, rentabilidade FLOAT, variacao_referencia FLOAT, performance FLOAT, observacao VARCHAR,
 
         PRIMARY KEY(cnpj, tipo, referencia)
     );`);
@@ -20,7 +20,6 @@ export default async function main(AdmZip,sql){
                 refYear -= 1;
             }
             if(refMonth < 10){refMonth = "0" + refMonth;}
-            process.stdout.write(`>> Atualizando lâmina ${refYear}${refMonth}       \r`);
             const response = await fetch(`https://dados.cvm.gov.br/dados/FI/DOC/LAMINA/DADOS/lamina_fi_${refYear}${refMonth}.zip`);
             const bufferPuro = await response.arrayBuffer();
             const buffer = Buffer.from(bufferPuro); //Conversão para o formato Buffer que o NodeJS e o adm-zip entendem
@@ -28,6 +27,7 @@ export default async function main(AdmZip,sql){
             const archives = zip.getEntries(); // Lista todos os arquivos internos
             for(let j = 0; j < archives.length; j++){
                 const name = archives[j].entryName;
+                process.stdout.write(`>> Atualizando lâmina ${name}       \r`);
                 if(name.includes("ano") || name.includes("mes")){
                     const text = archives[j].getData().toString('latin1');
                     const lines = text.split("\n");
@@ -53,7 +53,7 @@ export default async function main(AdmZip,sql){
                         if(valuesBatch.length === BATCH_SIZE || k === totalLines - 1){
                             await sql(`INSERT INTO fi_rentabilidades (
                                     cnpj, id_subclasse, data_competencia, tipo,
-                                    referencia, rentabilidade, variacao_referencia, perfomance, observacao
+                                    referencia, rentabilidade, variacao_referencia, performance, observacao
                                 )
 
                                 VALUES ${valuesBatch.join(',\n')}
