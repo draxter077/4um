@@ -8,7 +8,7 @@ Para rodar a aplicação do zero, o ambiente exige apenas a instalação do Node
 # PASSO A PASSO
 O primeiro passo para a execução envolve abrir o pgAdmin, criar um novo banco de dados (`quatroum`) e anotar as credenciais de acesso local. Em seguida, na pasta do ETL, instale as dependências com `npm install`, altere seus credencias PG no sql.js e execute o comando `node main.js`. Este script criará automaticamente a estrutura de tabelas (`fi_cadastro`, `fi_informe` e `fi_carteira`) e fará a extração dos arquivos ZIP da CVM e o web scraping da ANBIMA, o tratamento e a inserção dos dados em lotes otimizados de forma transparente.
 
-Para a camada de API, navegue até a pasta do backend, instale as dependências, altere suas credenciais e inicie o servidor rodando `node index.js`, disponibilizando os endpoints em `http://localhost:5001`. Como recomendação, uso o Ngrok para disponibilização total.
+Para a camada de API, navegue até a pasta do backend, instale as dependências, altere suas credenciais e inicie o servidor rodando `node index.js`, disponibilizando os endpoints em `http://localhost:5001`. Como recomendação, uso o Ngrok para disponibilização total, como ele já está disponível em `https://ace-chimp-merry.ngrok-free.app/4um"`.
 
 O frontend está hospedado em produção na Vercel e pode ser acessado pelo link publicado [`https://4um.ph.net.br`], mas também pode ser executado localmente abrindo o arquivo `index.html` diretamente no Firefox ou via servidor estático, garantindo que as chamadas da API apontem para a URL do seu backend.
 
